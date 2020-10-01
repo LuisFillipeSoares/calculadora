@@ -23,10 +23,10 @@ public class Calculadora extends JFrame{
 	}	
 	
 	private void organizarLayout() {
-		setLayout(new BorderLayout());
-		Display display = new Display();
-		display.setPreferredSize(new Dimension(233, 60));
-		add(display, BorderLayout.NORTH);
+		setLayout(new BorderLayout()); //definir local dentro do layout
+		Display display = new Display(); //instanciando o display
+		display.setPreferredSize(new Dimension(233, 60)); // ajustando preferencia de tamanho do display
+		add(display, BorderLayout.NORTH); //escolhendo local do display com base no norte da tela
 		
 		Teclado teclado = new Teclado();
 		add(teclado, BorderLayout.CENTER);
