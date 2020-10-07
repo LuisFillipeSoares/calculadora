@@ -33,9 +33,10 @@ public class Teclado extends JPanel implements ActionListener{ //aqui eu vou usa
 		constraints.fill = GridBagConstraints.BOTH; //PRENCHER O BOTAO
 		
 		// linha 1
-		constraints.gridwidth = 3; //largura da linha para ocupar 3 linhas;
+		constraints.gridwidth = 2; //largura da linha para ocupar 2 linhas;
 		adicionarBotao("AC", COR_CINZA_ESCURO, constraints, 0, 0);
-		constraints.gridwidth = 1; //voltando pro peso inicial para que as demais não ocupem 3 linhas;
+		constraints.gridwidth = 1; //voltando pro peso inicial para que as demais não ocupem 2 linhas;
+		adicionarBotao("+-", COR_LARANJA, constraints, 2, 0);
 		adicionarBotao("/", COR_LARANJA, constraints, 3, 0);
 	
 		// linha 2
