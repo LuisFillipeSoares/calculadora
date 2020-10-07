@@ -3,11 +3,17 @@ package br.com.semdominio.calculadora.visao;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import br.com.semdominio.calculadora.modelo.Memoria;
+
 @SuppressWarnings("serial")
-public class Teclado extends JPanel{ //aqui eu vou usar os botoes
+public class Teclado extends JPanel implements ActionListener{ //aqui eu vou usar os botoes
 
 	private final Color COR_CINZA_ESCURO = new Color(68, 69, 68); //instanciado uma para os botoes
 	private final Color COR_CINZA_CLARO = new Color(99, 99, 99);
@@ -36,7 +42,7 @@ public class Teclado extends JPanel{ //aqui eu vou usar os botoes
 		adicionarBotao("7", COR_CINZA_CLARO, constraints, 0, 1);
 		adicionarBotao("8", COR_CINZA_CLARO, constraints, 1, 1);
 		adicionarBotao("9", COR_CINZA_CLARO, constraints, 2, 1);
-		adicionarBotao("x", COR_LARANJA, constraints, 3, 1);
+		adicionarBotao("*", COR_LARANJA, constraints, 3, 1);
 		
 		// linha 3
 		adicionarBotao("4", COR_CINZA_CLARO, constraints, 0, 2);
@@ -59,13 +65,20 @@ public class Teclado extends JPanel{ //aqui eu vou usar os botoes
 		
 	}
 
-
-
 	private void adicionarBotao(String texto, Color cor, GridBagConstraints constraints, int x, int y) { //metodo criado para ser possivel adicionar logo linha e coluna direto na instaciação de um novo botao
 		constraints.gridy = y;
 		constraints.gridx = x;
 		Botao botao = new Botao(texto, cor);
+		botao.addActionListener(this);
 		add(botao, constraints);	
 	}
+	
+	@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() instanceof JButton) {
+				JButton botao = (JButton) e.getSource();
+				Memoria.getInstancia().processarComando(botao.getText());
+			}
+		}
 	
 }
